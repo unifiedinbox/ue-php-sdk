@@ -1,0 +1,11 @@
+{
+    "name": "unificationengine/ue-php-sdk",
+    "description": "UnificationEngine PHP SDK",
+    "authors": [
+        {
+            "name": "Hossam Saraya",
+            "email": "hossam.saraya@gmail.com"
+        }
+    ],
+    "require": {}
+}
