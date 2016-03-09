@@ -7,6 +7,8 @@ Class UEApp {
      * @param {String} app_secret
      */
     public function  __construct($api_key, $api_secret) {
+        $this->api_key = $api_key;
+        $this->api_secret = $api_secret;
     }
 
 
@@ -17,6 +19,10 @@ Class UEApp {
      * @return {UEUser} user the created user
      */
     public function create_user() {
+        $options = array(
+            "auth" =>  array($this->api_key,$this->api_secret),
+        );
+        return UERequest::fetch("user/create",$options);
     }
 
     /**

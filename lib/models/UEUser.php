@@ -10,7 +10,25 @@ Class UEUser {
      * @param {String} key the user key
      * @param {String} secret the user secret
      */
-    public function __construct($uri_or_key, $secret){
+    public function __construct($uri_or_key, $secret=null){
+        if($secret) {
+            //key,secret provided
+            $this->user_key = $uri_or_key;
+            $this->user_secret = $secret;
+        }
+        else {
+            //uri provided
+            $matches = array();
+            $matched = preg_match("/user:\/\/(.+):(.+)@/",$uri_or_key, $matches);
+
+            if(!$matched) {
+                throw new Exception("Can't initialize user. Please pass key,secret or user uri");
+            }
+
+            $this->user_key = $matches[1];
+            $this->user_secret = $matches[2];
+
+        }
     }
 
 
@@ -32,6 +50,11 @@ Class UEUser {
      * @return {Connection>} List of Connection objects representing the user connections
      */
     public function list_connections() {
+        $options = array(
+            "auth" => array($this->user_key, $this->user_secret)
+        );
+
+        return UERequest::fetch("connection/list", $options);
     }
 
 
