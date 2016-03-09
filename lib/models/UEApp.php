@@ -6,7 +6,7 @@ Class UEApp {
      * @param {String} app_key
      * @param {String} app_secret
      */
-    public  __construct($api_key, $api_secret) {
+    public function  __construct($api_key, $api_secret) {
     }
 
 

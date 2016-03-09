@@ -7,7 +7,7 @@ Class UEConnection {
      * @param {String} connection_uri the connection uri
      * @param {UEUser} User the User instance of the user owning the connection
      */
-    public __construct($connection_name, $connection_uri, $user) {
+    public function  __construct($connection_name, $connection_uri, $user) {
     }
 
 
@@ -19,7 +19,7 @@ Class UEConnection {
      * @access private
      * @returns {Number} random id
      */
-    public function self.generate_unique_id() {
+    private function generate_unique_id() {
     }
 
 
@@ -40,7 +40,7 @@ Class UEConnection {
      * @param {Array} message_options.message.link.title  message link title
      * @returns {Boolean}
      */
-    public function build_message_query($message_options) {
+    private function build_message_query($message_options) {
     }
 
 

@@ -10,7 +10,7 @@ Class UEUser {
      * @param {String} key the user key
      * @param {String} secret the user secret
      */
-    public __construct(uri_or_key, secret=nil){
+    public function __construct($uri_or_key, $secret){
     }
 
 
@@ -24,7 +24,7 @@ Class UEUser {
      *
      * @return {UEConnection} connection the created connection
      */
-    public function add_connection(connection_name, service_scheme, service_access_token) {
+    public function add_connection($connection_name, $service_scheme, $service_access_token) {
     }
 
     /**
@@ -42,7 +42,7 @@ Class UEUser {
      * @param {String} connection_name the connection identifier
      * @return {Boolean} Success/Fail
      */
-    public function remove_connection(connection_name) {
+    public function remove_connection($connection_name) {
     }
 
 
@@ -52,7 +52,7 @@ Class UEUser {
      * @param {String} serviceUri service uri. eg: facebook://accesstoken@facebook.com
      * @return {Boolean} Success/Fail
      */
-    public function test_connection(service_uri) {
+    public function test_connection($service_uri) {
     }
 
 
