@@ -42,6 +42,15 @@ Class UEApp {
      * @return {String[]} array of user uri without password
      */
     public function list_users()  {
+        $options = array(
+            "auth" =>  array($this->api_key,$this->api_secret),
+        );
+        $response =  UERequest::fetch("user/list",$options);
+        return array_map(function ($user){
+            return $user->uri;
+        },$response->users);
+
+
     }
 
 
