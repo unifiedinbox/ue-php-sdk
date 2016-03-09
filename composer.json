@@ -7,5 +7,8 @@
             "email": "hossam.saraya@gmail.com"
         }
     ],
-    "require": {}
+    "require": {
+        "mashape/unirest-php": "^3.0",
+        "rmccue/requests": "^1.6"
+    }
 }
