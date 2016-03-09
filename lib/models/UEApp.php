@@ -34,6 +34,14 @@ Class UEApp {
      * @return {Boolean} success/fail
      */
     public function delete_user( $user )  {
+        $options = array(
+            "auth" =>  array($this->api_key,$this->api_secret),
+            "body" => array(
+                "uri" => $user->get_uri()
+            )
+        );
+        return UERequest::fetch("user/delete",$options);
+
     }
 
     /**

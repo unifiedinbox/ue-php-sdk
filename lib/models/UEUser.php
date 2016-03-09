@@ -15,6 +15,7 @@ Class UEUser {
             //key,secret provided
             $this->user_key = $uri_or_key;
             $this->user_secret = $secret;
+            $this->uri = "user://" . $this->user_key . ":" . $this->user_secret . "@";
         }
         else {
             //uri provided
@@ -27,10 +28,18 @@ Class UEUser {
 
             $this->user_key = $matches[1];
             $this->user_secret = $matches[2];
+            $this->uri = $uri_or_key;
 
         }
     }
 
+
+    /*
+     * Getters
+     */
+    public function get_uri() {
+        return $this->uri;
+    }
 
 
     /***
