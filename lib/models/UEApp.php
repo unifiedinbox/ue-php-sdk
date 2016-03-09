@@ -22,7 +22,9 @@ Class UEApp {
         $options = array(
             "auth" =>  array($this->api_key,$this->api_secret),
         );
-        return UERequest::fetch("user/create",$options);
+        $response =  UERequest::fetch("user/create",$options);
+        print_r($response);
+        return new UEUser($response->uri);
     }
 
     /**

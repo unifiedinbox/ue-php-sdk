@@ -54,6 +54,7 @@ Class UEUser {
             "auth" => array($this->user_key, $this->user_secret)
         );
 
+        //TODO: Initialize UEConnection
         return UERequest::fetch("connection/list", $options);
     }
 

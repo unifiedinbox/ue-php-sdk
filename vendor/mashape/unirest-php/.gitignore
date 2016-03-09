@@ -1,6 +1,0 @@
-.DS_Store
-build
-composer.lock
-composer.phar
-coverage
-vendor
