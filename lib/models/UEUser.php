@@ -52,6 +52,18 @@ Class UEUser {
      * @return {UEConnection} connection the created connection
      */
     public function add_connection($connection_name, $service_scheme, $service_access_token) {
+        $uri = "${service_scheme}://${service_access_token}@${service_scheme}.com";
+        $options = array(
+            "auth" => array($this->user_key, $this->user_secret),
+            "body" => array(
+                "uri" =>  $uri,
+                "name" =>  $connection_name
+            )
+        );
+
+        $response = UERequest::fetch("connection/add", $options);
+
+        return ($response->status == 200)? new UEConnection($connection_name,$uri,$this) : $response;
     }
 
     /**
@@ -63,8 +75,15 @@ Class UEUser {
             "auth" => array($this->user_key, $this->user_secret)
         );
 
-        //TODO: Initialize UEConnection
-        return UERequest::fetch("connection/list", $options);
+        $response =  UERequest::fetch("connection/list", $options);
+        $connections = $response->connections;
+        $connection_objects = array();
+        foreach($connections as $key => $value) {
+
+            $connection = new UEConnection($key,$value->uri,$this);
+            array_push($connection_objects, $connection);
+        }
+        return $connection_objects;
     }
 
 

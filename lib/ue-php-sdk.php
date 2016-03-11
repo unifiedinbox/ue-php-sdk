@@ -8,11 +8,13 @@ require __DIR__ . "/models/UEUser.php";
 require __DIR__ . "/models/UEConnection.php";
 
 
-$app = new UEApp("2206779c2acc42e2824c62026001ac25", "65c9ab904a3354738a4442e798f27387");
 
-$user = new UEUser("505f393b-5197-44ea-8b5e-a07d870bb1bd","b3b551ee-9a73-4a57-8136-c9cd4fb36af4");
- $user = $app->create_user();
+$app  = new UEApp("b56063451547432d99111c91fd5d968b","695590bcf875546bf85c6358d3512ef8");
+// $user = $app->create_user();
+$user = new UEUser("9cd4e7b4-cf4f-473b-b012-b67879eecf73","5543e74a-0cbd-4dd0-8e93-93dad7492572");
 
+print_r($user->list_connections());
 
-print_r($app->delete_user($user));
+// $response = $user->add_connection("f2b","facebook","CAACEdEose0cBANGOi4BMu0wcQpfSrkBz4wqPjvJSMJ2IJt4ZCeZCVcoVhrTZCAm8YkwA3DnlfmjGCBepgSOq496BYDgIsMg0CUFywZCZAZBCwgJaEXsHC2VFGWZAyMWhV6sbkRIatuS2nOZA5Ds0K3VPYVqyqW5QX90LnUtoZBFaEcM2KjubcxDruRkEYtyRdhHC7ASRePZCP0RQZDZD");
 
+// print_r($response);

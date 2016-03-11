@@ -8,6 +8,10 @@ Class UEConnection {
      * @param {UEUser} User the User instance of the user owning the connection
      */
     public function  __construct($connection_name, $connection_uri, $user) {
+        $this->name = $connection_name;
+        $this->uri = $connection_uri;
+        $this->user = $user;
+
     }
 
 
@@ -38,7 +42,7 @@ Class UEConnection {
      * @param {Array} message_options.message.link.uri message link uri
      * @param {Array} message_options.message.link.description  message link description
      * @param {Array} message_options.message.link.title  message link title
-     * @returns {Boolean}
+     * @returns {Object} message params object
      */
     private function build_message_query($message_options) {
     }
@@ -55,7 +59,7 @@ Class UEConnection {
      * @param {String} message_options.receivers.id in case of Page, this is the page id
      * @param {String} message_options.message.subject message subject
      * @param {Array} message_options.message.body message body
-     * @param {Array} message_options.message.image image uri
+     * @param {Array} message_options.messag+e.image image uri
      * @param {Array} message_options.message.link message link
      * @param {Array} message_options.message.link.uri message link uri
      * @param {Array} message_options.message.link.description  message link description
