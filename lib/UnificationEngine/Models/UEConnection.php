@@ -1,4 +1,11 @@
 <?php
+
+
+namespace UnificationEngine\Models;
+
+use UnificationEngine\Utils\UERequest as UERequest;
+use UnificationEngine\Models\UEUser as UEUser;
+
 Class UEConnection {
 
 

@@ -1,6 +1,9 @@
 <?php
 
+namespace UnificationEngine\Utils;
+
 use Unirest\Request;
+use UnificationEngine\Config\Constants as Constants;
 
 class UERequest {
     

@@ -1,4 +1,8 @@
 <?php
+
+
+namespace UnificationEngine\Models;
+
 Class UEUser {
 
 

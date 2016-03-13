@@ -1,4 +1,11 @@
 <?php
+
+
+namespace UnificationEngine\Models;
+
+use UnificationEngine\Models\UEUser as UEUser;
+use UnificationEngine\Utils\UERequest as UERequest;
+
 Class UEApp {
 
     /**
