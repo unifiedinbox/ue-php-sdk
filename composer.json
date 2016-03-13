@@ -1,6 +1,7 @@
 {
     "name" : "unificationengine/ue-php-sdk",
     "description": "UnificationEngine PHP SDK",
+    "version": "1.0.0",
     "authors": [
         {
             "name": "Hossam Saraya",
