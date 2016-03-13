@@ -10,11 +10,14 @@ $ composer require unificationengine/ue-php-sdk
 ## Usage
 
 ```php
+use UnificationEngine\Models\UEApp;
 $app = new UEApp("APP_KEY","APP_SECRET");
 ```
 
 #### Creating User
 ```php
+use UnificationEngine\Models\UEApp;
+use UnificationEngine\Models\UEUser;
 //Creating a new user
 $user = $app.create_user();
 
