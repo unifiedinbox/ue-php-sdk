@@ -8,6 +8,9 @@
             "email": "hossam.saraya@gmail.com"
         }
     ],
+"autoload": {
+        "psr-4": { "UnificationEngine\\": ["lib/"] }
+    },
     "require": {
         "mashape/unirest-php": "^3.0"
     }
