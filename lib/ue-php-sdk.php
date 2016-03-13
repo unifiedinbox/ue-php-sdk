@@ -9,19 +9,21 @@ require __DIR__ . "/models/UEConnection.php";
 
 
 
-$app  = new UEApp("b56063451547432d99111c91fd5d968b","695590bcf875546bf85c6358d3512ef8");
-// $user = $app->create_user();
-$user = new UEUser("9cd4e7b4-cf4f-473b-b012-b67879eecf73","5543e74a-0cbd-4dd0-8e93-93dad7492572");
+$app  = new UEApp("APP_KEY","APP_SECRET");
 
-// $response = $user->add_connection("f2b","facebook","CAACEdEose0cBANGOi4BMu0wcQpfSrkBz4wqPjvJSMJ2IJt4ZCeZCVcoVhrTZCAm8YkwA3DnlfmjGCBepgSOq496BYDgIsMg0CUFywZCZAZBCwgJaEXsHC2VFGWZAyMWhV6sbkRIatuS2nOZA5Ds0K3VPYVqyqW5QX90LnUtoZBFaEcM2KjubcxDruRkEYtyRdhHC7ASRePZCP0RQZDZD");
-
-$connection = $user->add_connection("f4b","facebook","CAACEdEose0cBAAtNPsEhyosSpuALsAN8CoV1eOQPCuoilauTWZBwZAl5E8fPq1I1xcL4ZAdgbqdERZAeN7dmuTmDZCJCscMoko5UfgYdBc6uBnnxBZBUadriOE3EOHnnahqUuD9sxRLZAaxMKFl74V8EAaWDDyOs9lZAEBsHi0FOZAzjZBZAbgM3lmfGocVK14BDjlqvLTZArPKoZCQZDZD");
-//
+//Create a new user
+$user = $app->create_user();
 
 
+//Or use an existing user
+$user = new UEUser("USER_KEY","USER_SECRET");
 
 
+//Add a connection. (throws an error if the connection is not added)
+$connection = $user->add_connection("FB","facebook","FACEBOOK_ACCESS_TOKEN");
 
+
+//Message Options
 $options = array(
     "receivers" => array(
         array(
@@ -44,6 +46,7 @@ $options = array(
     )
 );
 
-$res = $connection->send_message($options);
-print_r($res);
-    // print_r($response);
+
+
+//Send the message and get their uris
+$uris = $connection->send_message($options);
