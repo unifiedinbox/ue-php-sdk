@@ -1,5 +1,5 @@
 {
-    "name": "unificationengine/ue-php-sdk",
+    "name" : "unificationengine/ue-php-sdk",
     "description": "UnificationEngine PHP SDK",
     "authors": [
         {
@@ -8,6 +8,6 @@
         }
     ],
     "require": {
-        "mashape/unirest-php": "^3.0",
+        "mashape/unirest-php": "^3.0"
     }
 }
