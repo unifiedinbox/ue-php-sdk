@@ -19,14 +19,28 @@ Class UEConnection {
     }
 
     /**
-     * Used for message parts
+     * Used for message parts. Wrapper in this function for easier tweaking later
      * @access private
      * @returns {Number} random id
      */
     private function generate_unique_id() {
+        return uniqid();
     }
 
 
+    private function array_to_object($array) {
+        $obj = new stdClass;
+        foreach($array as $k => $v) {
+            if(strlen($k)) {
+                if(is_array($v)) {
+                    $obj->{$k} = $this->array_to_object($v); //RECURSION
+                } else {
+                    $obj->{$k} = $v;
+                }
+            }
+        }
+        return $obj;
+    } 
     /**
      * Builds the API message parameter from passed options
      *
@@ -45,6 +59,87 @@ Class UEConnection {
      * @returns {Object} message params object
      */
     private function build_message_query($message_options) {
+        if(!$message_options["receivers"] || !$message_options["message"])
+            throw new Exception("Message must have a message and areceiver");
+
+        $default_content_type = "binary";
+        $params = $message_options; //Clone for immutability
+        $queryObject = array();
+        $queryObject["receivers"] = array();
+
+        //Formulate Receivers
+        for($i=0; $i< count($params["receivers"]); $i++) {
+            $receiver = $params["receivers"][$i];
+
+            $receiver["Connector"] = $this->name;
+            $receiver["address"] = ($receiver["name"] == "page")? $receiver["id"]: "";
+            array_push($queryObject["receivers"], $receiver);
+        }
+
+        //Formulate Message Parts
+        $queryObject["parts"] = array();
+
+        if($params["message"]["body"]){
+            array_push($queryObject["parts"] , array(
+                "id"=> $this->generate_unique_id(),
+                "contentType"=> $default_content_type,
+                "type"=> "body",
+                "data"=> $params["message"]["body"],
+            ));
+        };
+
+        //Image Part
+        if($params["message"]["image"]){
+            array_push($queryObject["parts"],array(
+                "id"=> $this->generate_unique_id(),
+                "contentType"=> $default_content_type,
+                "type"=> "image_link",
+                "data"=> $params["message"]["image"]
+            ));
+        }
+
+
+        //Link Part
+        if($params["message"]["link"]) {
+            if($params["message"]["link"]["uri"]){
+                array_push($queryObject["parts"], array(
+                    "id"=> $this->generate_unique_id(),
+                    "contentType"=> $default_content_type,
+                    "type"=> "link",
+                    "data"=> $params["message"]["link"]["uri"]
+
+                ));
+            }
+
+            if($params["message"]["link"]["description"]){
+                array_push($queryObject["parts"],array(
+                    "id"=> $this->generate_unique_id(),
+                    "contentType"=> $default_content_type,
+                    "type"=> "link_description",
+                    "data"=> $params["message"]["link"]["description"]
+                ));
+            }
+
+            if($params["message"]["link"]["title"]){
+                array_push($queryObject["parts"],array(
+                    "id"=> $this->generate_unique_id(),
+                    "contentType"=> $default_content_type,
+                    "type"=> "link_title",
+                    "data"=> $params["message"]["link"]["title"]
+                ));
+            }
+
+        }
+
+        //Subject
+        if($params["message"]["subject"]) {
+            $queryObject["subject"] = $params["message"]["subject"];
+        }
+
+
+        return $queryObject;
+
+
     }
 
 
@@ -68,5 +163,14 @@ Class UEConnection {
      * @returns {Promise}
      */
     public function send_message($message_options) {
+        $options = array(
+            "auth" => array($this->user->user_key,$this->user->user_secret),
+            "body" => array(
+                "message" => $this->build_message_query($message_options)
+            )
+        );
+        $response = UERequest::fetch("message/send", $options);
+        return $response->URIs;
+
     }
 }

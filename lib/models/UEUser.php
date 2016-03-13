@@ -62,8 +62,10 @@ Class UEUser {
         );
 
         $response = UERequest::fetch("connection/add", $options);
-
-        return ($response->status == 200)? new UEConnection($connection_name,$uri,$this) : $response;
+        if($response->status == 200)
+            return new UEConnection($connection_name,$uri,$this);
+        $error_msg = $response->info;
+        throw new Exception($error_msg);
     }
 
     /**
@@ -95,6 +97,19 @@ Class UEUser {
      * @return {Boolean} Success/Fail
      */
     public function remove_connection($connection_name) {
+
+        $options = array(
+            "auth" => array($this->user_key,$this->user_secret),
+            "body" => array(
+                "name" => $connection_name
+            )
+        );
+
+        $response = UERequest::fetch("connection/remove", $options);
+
+        return ($response->status == 200);
+
+
     }
 
 
@@ -105,6 +120,19 @@ Class UEUser {
      * @return {Boolean} Success/Fail
      */
     public function test_connection($service_uri) {
+        $options = array(
+            "auth" => array($this->user_key,$this->user_secret),
+            "body" => array(
+                "uri" => $service_uri 
+            )
+        );
+
+        $response = UERequest::fetch("connection/test", $options);
+
+        return ($response->Status->_empty_->status == 200);
+
+
+
     }
 
 
