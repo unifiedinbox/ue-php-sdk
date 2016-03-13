@@ -15,13 +15,13 @@ $app = new UEApp("APP_KEY","APP_SECRET");
 
 #### Creating User
 ```php
-#Creating a new user
+//Creating a new user
 $user = $app.create_user();
 
-#Using existing user using key and secret
+//Using existing user using key and secret
 $user = new UEUser("USER_KEY","USER_SECRET");
 
-#Using existing user using it's uri
+//Using existing user using it's uri
 $user = new UEUser("user://USER_KEY:USER_SECRET@");
 
 
