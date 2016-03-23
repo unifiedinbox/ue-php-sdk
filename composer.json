@@ -12,6 +12,7 @@
         "psr-0": { "UnificationEngine": "lib" }
     },
     "require": {
-        "mashape/unirest-php": "^3.0"
+        "mashape/unirest-php": "^3.0",
+        "rmccue/requests": ">=1.0"
     }
 }
