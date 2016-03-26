@@ -4,54 +4,57 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5bd95e065e374971aa4aa8048f18c5b6",
-    "content-hash": "3b7f801bce8387a658ba15a9edbaaa48",
+    "hash": "f71956020fcc1ac69724192b5a51afee",
+    "content-hash": "974baa6e99c42ba27861e80c3dd3170e",
     "packages": [
         {
-            "name": "mashape/unirest-php",
-            "version": "v3.0.0",
+            "name": "rmccue/requests",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/Mashape/unirest-php.git",
-                "reference": "2bedcf05acf56a50d4d96a7fcd0a1856308095cb"
+                "url": "https://github.com/rmccue/Requests.git",
+                "reference": "6aac485666c2955077d77b796bbdd25f0013a4ea"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Mashape/unirest-php/zipball/2bedcf05acf56a50d4d96a7fcd0a1856308095cb",
-                "reference": "2bedcf05acf56a50d4d96a7fcd0a1856308095cb",
+                "url": "https://api.github.com/repos/rmccue/Requests/zipball/6aac485666c2955077d77b796bbdd25f0013a4ea",
+                "reference": "6aac485666c2955077d77b796bbdd25f0013a4ea",
                 "shasum": ""
             },
             "require": {
-                "ext-curl": "*",
-                "php": ">=5.4.0"
+                "php": ">=5.2"
             },
             "require-dev": {
-                "codeclimate/php-test-reporter": "0.1.*",
-                "phpunit/phpunit": "~4.4"
-            },
-            "suggest": {
-                "ext-json": "Allows using JSON Bodies for sending and parsing requests"
+                "satooshi/php-coveralls": "dev-master"
             },
             "type": "library",
             "autoload": {
                 "psr-0": {
-                    "Unirest": "src"
+                    "Requests": "library/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "MIT"
+                "ISC"
             ],
-            "description": "Unirest PHP",
-            "homepage": "https://github.com/Mashape/unirest-php",
+            "authors": [
+                {
+                    "name": "Ryan McCue",
+                    "homepage": "http://ryanmccue.info"
+                }
+            ],
+            "description": "A HTTP library written in PHP, for human beings.",
+            "homepage": "http://github.com/rmccue/Requests",
             "keywords": [
-                "client",
                 "curl",
+                "fsockopen",
                 "http",
-                "https",
-                "rest"
+                "idna",
+                "ipv6",
+                "iri",
+                "sockets"
             ],
-            "time": "2016-02-25 04:27:05"
+            "time": "2014-05-18 04:59:02"
         }
     ],
     "packages-dev": [],

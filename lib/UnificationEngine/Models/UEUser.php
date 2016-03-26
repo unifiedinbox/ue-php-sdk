@@ -3,6 +3,8 @@
 
 namespace UnificationEngine\Models;
 
+use UnificationEngine\Utils\UERequest;
+
 Class UEUser {
 
 
@@ -27,7 +29,7 @@ Class UEUser {
             $matched = preg_match("/user:\/\/(.+):(.+)@/",$uri_or_key, $matches);
 
             if(!$matched) {
-                throw new Exception("Can't initialize user. Please pass key,secret or user uri");
+                throw new \Exception("Can't initialize user. Please pass key,secret or user uri");
             }
 
             $this->user_key = $matches[1];
@@ -69,7 +71,7 @@ Class UEUser {
         if($response->status == 200)
             return new UEConnection($connection_name,$uri,$this);
         $error_msg = $response->info;
-        throw new Exception($error_msg);
+        throw new \Exception($error_msg);
     }
 
     /**

@@ -1,5 +1,5 @@
 <?php
-namespace UnificationEngine\Constants;
+namespace UnificationEngine\Config;
 
 class Constants {
     static function base_url() {

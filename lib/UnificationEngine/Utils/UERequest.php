@@ -2,7 +2,6 @@
 
 namespace UnificationEngine\Utils;
 
-use Unirest\Request;
 use UnificationEngine\Config\Constants as Constants;
 
 class UERequest {
@@ -18,11 +17,11 @@ class UERequest {
         $auth = $request_options["auth"];
         $body = array_key_exists("body",$request_options)? json_encode($request_options["body"]) : "{}";
         $options = array(
-            "auth" => new Requests_Auth_Basic($auth)
+            "auth" => $auth
         );
         $url = Constants::base_url() . $resource;
         $headers = array();
-        $response = Requests::post($url, $headers,$body, $options);
+        $response = \Requests::post($url, $headers,$body, $options);
         $json_decoded_response =  json_decode($response->body);
         if(empty($json_decoded_response))
             return $response->body;
