@@ -36,7 +36,7 @@ $user = new UEUser("user://USER_KEY:USER_SECRET@");
 
 #### Listing Users
 ```php
-$users = $app.list_users();
+$users = $app->list_users();
 ```
 note: listed users does not have the user_secret listed for security reasons. So, you cant use a user from the list unless you have saved it's key somewhere
 
