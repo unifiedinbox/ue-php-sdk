@@ -48,12 +48,14 @@ $app->delete_user($user) //true
 
 #### Adding a connection to a user
 ```php
-$connection = $user->add_connection("myconnectionname", "facebook", "facebook_access_token");
+$connection = $user->add_connection("connection_name", "service", "service_access_token", $optional_params);
 //connection is an instance of UEConnection
 ```
 
 - `connection_name` must be unique per connection.
-- `access_token` has to be valid and working from the provider side
+- `service` must be the scheme of the connector from the developer portal
+- `service_access_token` has to be valid and working from the provider side
+- `$optional_params` should be an array with "key", "value" pair
 
 
 #### Listing User connections
