@@ -57,8 +57,21 @@ Class UEUser {
      *
      * @return {UEConnection} connection the created connection
      */
-    public function add_connection($connection_name, $service_scheme, $service_access_token) {
+    public function add_connection($connection_name, $service_scheme, $service_access_token, $optional_params) {
         $uri = "${service_scheme}://${service_access_token}@${service_scheme}.com";
+
+		if ($optional_params) {
+			$params = '';
+			foreach ($optional_params as $key => $value) {
+
+				$params = $params . $key . '=' . $optional_params[$key] . '&';
+			}
+			
+			$params = rtrim($params, "&");
+
+			$uri = $uri . '/?' . $params;
+		}
+
         $options = array(
             "auth" => array($this->user_key, $this->user_secret),
             "body" => array(
