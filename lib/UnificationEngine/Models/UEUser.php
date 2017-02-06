@@ -57,7 +57,7 @@ Class UEUser {
      *
      * @return {UEConnection} connection the created connection
      */
-    public function add_connection($connection_name, $service_scheme, $service_access_token, $optional_params) {
+    public function add_connection($connection_name, $service_scheme, $service_access_token, $optional_params='') {
         $uri = "${service_scheme}://${service_access_token}@${service_scheme}.com";
 
 		if ($optional_params) {
