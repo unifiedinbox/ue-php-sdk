@@ -17,7 +17,8 @@ class UERequest {
         $auth = $request_options["auth"];
         $body = array_key_exists("body",$request_options)? json_encode($request_options["body"]) : "{}";
         $options = array(
-            "auth" => $auth
+            "auth" => $auth,
+			'timeout' => 300
         );
         $url = Constants::base_url() . $resource;
         $headers = array();
