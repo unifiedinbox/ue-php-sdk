@@ -143,6 +143,13 @@ Class UEConnection {
             $queryObject["subject"] = $params["message"]["subject"];
         }
 
+		if (isset($params["sender"])) {
+			$queryObject["sender"] = array();
+			if(isset($params["sender"]["address"])) {
+				$queryObject["sender"] = (object) array('address' => $params["sender"]["address"]);
+			}
+		}
+
 
         return $queryObject;
 
